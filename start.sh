@@ -48,4 +48,4 @@ cat $HOME/dict.json | lolcat
 else
 tail $HOME/dict.json | jq
 fi
-
+rm -rf $HOME/dict.json 2>/dev/null
