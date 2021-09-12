@@ -1,4 +1,4 @@
-#!/bin/python2
+#!/bin/python
 from PyDictionary import PyDictionary
 import time
 import sys, os
@@ -16,7 +16,6 @@ for opt, arg in opts:
         md5_hash = arg
     elif opt in ['-P']:
         pwdfile = arg
-
 #print ("{\n",'"DISCRIPTION":',)
 dic=PyDictionary((md5_hash))
 
