@@ -25,6 +25,20 @@ elif [[ ${cmd} == 'start.sh ~u' || ${cmd} == 'start.sh ~~update' ]]; then
   internet
   cd .. && rm -rf dictionary
   git clone https://github.com/BHUTUU/dictionary
+elif [[ ${cmd} == 'start.sh -i' || ${cmd} == 'start.sh --install' ]]; then
+cd $PREFIX/share
+if [[ -e "dictionary" ]]; then
+rm -rf dictionary
+fi
+git clone https://github.com/BHUTUU/dictionary
+cd dictionary
+cat <<- CONF > $PREFIX/bin/dictionary
+#!/bin/bash
+arg="\$@"
+cd $PREFIX/share/dictionary
+./start.sh \${arg}
+CONF
+chmod +x $PREFIX/bin/dictionary
 else
 
 
