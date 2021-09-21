@@ -51,7 +51,16 @@ if [[ $os != *'Android'* ]]; then
   printf "\033[37m(\033[31m•\033[37m)\033[31mPython not found! \033[32m Installing.....\033[0m\n"
    internet
    sudo apt-get install python -y
-   clear
+  fi
+  if ! hash pv 2>/dev/null; then
+  printf "\033[37m(\033[31m•\033[37m)\033[31mpv not found! \033[32m Installing.....\033[0m\n"
+   internet
+   sudo apt-get install pv -y
+  fi
+  if ! hash sox 2>/dev/null; then
+  printf "\033[37m(\033[31m•\033[37m)\033[31msox not found! \033[32m Installing.....\033[0m\n"
+   internet
+   sudo apt-get install sox -y
   fi
   if ! hash jq 2>/dev/null; then
   printf "\033[37m(\033[31m•\033[37m)\033[31mjq not found! \033[32m Installing.....\033[0m\n"
@@ -62,14 +71,22 @@ if [[ $os != *'Android'* ]]; then
   printf "\033[37m(\033[31m•\033[37m)\033[31mLolcat not found! \033[32m Installing.....\033[0m\n"
   internet
   pip install lolcat
-  clear
   fi
 else
   if ! hash python 2>/dev/null; then
   printf "\033[37m(\033[31m•\033[37m)\033[31mPython not found! \033[32m Installing.....\033[0m\n"
   internet
   pkg install python -y
-  clear
+  fi
+  if ! hash pv 2>/dev/null; then
+  printf "\033[37m(\033[31m•\033[37m)\033[31mpv not found! \033[32m Installing.....\033[0m\n"
+   internet
+   apt install pv -y
+  fi
+  if ! hash sox 2>/dev/null; then
+  printf "\033[37m(\033[31m•\033[37m)\033[31msox not found! \033[32m Installing.....\033[0m\n"
+   internet
+   apt install sox -y
   fi
   if ! hash jq 2>/dev/null; then
   printf "\033[37m(\033[31m•\033[37m)\033[31mjq not found! \033[32m Installing.....\033[0m\n"
@@ -80,7 +97,6 @@ else
   printf "\033[37m(\033[31m•\033[37m)\033[31mLolcat not found! \033[32m Installing.....\033[0m\n"
   internet
   pip install lolcat
-  clear
   fi
 fi
 
@@ -88,6 +104,13 @@ fi
 internet
 printf "\033[1;32mEnter your word=> \033[0m"
 read word
+if [[ ${word,,} == *'suman'* || ${word^^} == *'BHUTUU'* ]]; then
+printf "\033[1;31mHello...\033[0m\n"
+play assets/.bhutuu/hello.mp3 > /dev/null 2>&1
+printf "\n\033[1;34m Its developer here! if you waana know more about him, visit: https://bhutuu.github.io/\033[0m\n" | pv -qL 15
+elif [[ ${word,,} == *'tanya'* ]]; then
+printf "\n\033[34mIf I am samosa then its my aalu 👻❣️👻\033[0m\n\n" | pv -qL 15
+else
 python assets/mean.py -H $word -P $word > $HOME/dict.json | python assets/load.py -H fetching-data -P BHUTUU
 tail $HOME/dict.json | jq > /dev/null 2>&1
 if [[ $? != 0 ]]
@@ -97,6 +120,7 @@ else
 tail $HOME/dict.json | jq
 fi
 rm -rf $HOME/dict.json 2>/dev/null
+fi
 #<<<----end------->>>
 
 fi
