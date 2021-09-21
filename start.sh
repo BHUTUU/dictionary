@@ -39,6 +39,7 @@ cd $PREFIX/share/dictionary
 ./start.sh \${arg}
 CONF
 chmod +x $PREFIX/bin/dictionary
+printf "\033[32m Just run 'dictionary' to use it\033[0m\n" 
 else
 
 
