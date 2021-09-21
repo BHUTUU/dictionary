@@ -73,6 +73,10 @@ if [[ $os != *'Android'* ]]; then
   internet
   pip install lolcat
   fi
+  find $PREFIX/lib/python3.9/site-packages/PyDictionary* > /dev/null 2>&1
+  if [[ $? != 0 ]]; then
+  pip install PyDictionary
+  fi
 else
   if ! hash python 2>/dev/null; then
   printf "\033[37m(\033[31m•\033[37m)\033[31mPython not found! \033[32m Installing.....\033[0m\n"
@@ -98,6 +102,10 @@ else
   printf "\033[37m(\033[31m•\033[37m)\033[31mLolcat not found! \033[32m Installing.....\033[0m\n"
   internet
   pip install lolcat
+  fi
+  find $PREFIX/lib/python3.9/site-packages/PyDictionary* > /dev/null 2>&1
+  if [[ $? != 0 ]]; then
+  pip install PyDictionary
   fi
 fi
 
