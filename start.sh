@@ -103,7 +103,7 @@ else
   internet
   pip install lolcat
   fi
-  find $PREFIX/lib/python3.9/site-packages/PyDictionary* > /dev/null 2>&1
+  find $PREFIX/lib/python3.*/site-packages/PyDictionary* > /dev/null 2>&1
   if [[ $? != 0 ]]; then
   pip install PyDictionary
   fi
